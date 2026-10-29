@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Landing Pages · Sean Ahern, MBA</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<meta name="description" content="Landing pages written, designed and launched by Sean Ahern, MBA, copywriter and marketer in Doylestown, PA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --white:#F0F3F7; --blue:#1C52A4; --red:#D82835; --amber:#EFA812;
+  --gun:#3E4249; --teal:#00A3A6; --pink:#E64E72;
+  --ink:#1a1d22; --muted:#5c626b; --line:#e2e6ec; --paper:#ffffff;
+  --shadow:0 18px 50px -20px rgba(30,40,60,.28); --shadow-sm:0 8px 24px -12px rgba(30,40,60,.30);
+  --f-disp:"Space Grotesk","Helvetica Neue",Arial,sans-serif; --f-body:"Inter",-apple-system,system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{font-family:var(--f-body);background:var(--white);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+::selection{background:var(--amber);color:var(--ink)}
+h1,h2,h3,.disp{font-family:var(--f-disp);letter-spacing:-.02em;line-height:1.05}
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:16px 28px;background:rgba(240,243,247,.82);backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:.3s}
+.nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px -18px rgba(0,0,0,.4)}
+.brand{font-family:var(--f-disp);font-weight:700;font-size:19px;letter-spacing:-.02em;display:flex;align-items:center}
+.brand .dot{width:11px;height:11px;border-radius:3px;background:var(--red);box-shadow:5px 0 0 var(--blue),10px 0 0 var(--amber);margin-right:20px}
+.nav-links{display:flex;gap:2px;align-items:center}
+.nav-links a{font-size:13.5px;font-weight:500;color:var(--muted);padding:8px 11px;border-radius:8px;transition:.2s}
+.nav-links a:hover{color:var(--ink);background:rgba(28,82,164,.07)}
+.nav-cta{background:var(--ink);color:#fff !important;font-weight:600}
+.nav-cta:hover{background:var(--blue) !important;color:#fff !important}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px}
+.burger span{width:24px;height:2px;background:var(--ink);border-radius:2px;transition:.3s}
+.hero{position:relative;padding:170px 0 90px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none}
+.blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.24}
+.b1{width:520px;height:520px;background:var(--blue);top:-160px;right:-120px;animation:float1 16s ease-in-out infinite}
+.b2{width:420px;height:420px;background:var(--red);bottom:-180px;left:-100px;animation:float2 19s ease-in-out infinite}
+.b3{width:300px;height:300px;background:var(--amber);top:40%;left:55%;opacity:.16;animation:float1 22s ease-in-out infinite}
+@keyframes float1{0%,100%{transform:translate(0,0)}50%{transform:translate(-40px,50px)}}
+@keyframes float2{0%,100%{transform:translate(0,0)}50%{transform:translate(50px,-40px)}}
+.hero .wrap{position:relative;z-index:2}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:22px}
+.eyebrow .pulse{width:9px;height:9px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 0 rgba(0,163,166,.6);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(0,163,166,.55)}70%{box-shadow:0 0 0 12px rgba(0,163,166,0)}100%{box-shadow:0 0 0 0 rgba(0,163,166,0)}}
+h1.title{font-size:clamp(38px,6.2vw,74px);font-weight:700;max-width:15ch}
+h1.title .g1{color:var(--blue)}
+.roles{margin:26px 0 8px;font-size:clamp(16px,2vw,21px);font-weight:500;color:var(--muted);max-width:46ch}
+.roles b{color:var(--ink);font-weight:600}
+.hero-cta{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border-radius:11px;font-weight:600;font-size:15px;transition:.25s;cursor:pointer;border:none}
+.btn-p{background:var(--ink);color:#fff}
+.btn-p:hover{background:var(--blue);transform:translateY(-2px);box-shadow:0 14px 30px -12px rgba(28,82,164,.6)}
+.btn-o{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn-o:hover{border-color:var(--ink);transform:translateY(-2px)}
+.stats{display:flex;flex-wrap:wrap;gap:14px;margin-top:56px}
+.stat{flex:1;min-width:150px;padding:22px 24px;background:var(--paper);border-radius:16px;box-shadow:var(--shadow-sm);border:1px solid var(--line);position:relative;overflow:hidden}
+.stat::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px}
+.stat:nth-child(1)::before{background:var(--blue)}.stat:nth-child(2)::before{background:var(--red)}
+.stat:nth-child(3)::before{background:var(--amber)}.stat:nth-child(4)::before{background:var(--teal)}
+.stat .n{font-family:var(--f-disp);font-size:34px;font-weight:700;line-height:1}
+.stat .l{font-size:13px;color:var(--muted);margin-top:6px}
+
+section{padding:90px 0;position:relative}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:44px}
+.sec-label{font-size:12.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.sec-label::before{content:"";width:26px;height:3px;border-radius:3px;background:var(--red)}
+.sec-head h2{font-size:clamp(28px,4vw,46px);font-weight:700}
+.sec-head p{color:var(--muted);max-width:40ch;font-size:15.5px}
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:34px}
+.chip{padding:9px 18px;border-radius:999px;font-size:13.5px;font-weight:600;background:var(--paper);border:1.5px solid var(--line);color:var(--muted);cursor:pointer;transition:.2s}
+.chip:hover{border-color:var(--blue);color:var(--blue)}
+.chip.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.masonry{column-count:3;column-gap:22px}
+@media(max-width:900px){.masonry{column-count:2}}
+@media(max-width:560px){.masonry{column-count:1}}
+.tile{break-inside:avoid;margin-bottom:22px;position:relative;cursor:pointer;background:none;border-radius:0;box-shadow:none;transition:transform .4s cubic-bezier(.2,.8,.2,1);opacity:0;transform:translateY(26px)}
+.tile.in{opacity:1;transform:none}
+.tile:hover{transform:translateY(-4px)}
+.tile img{width:100%;height:auto;display:block;border-radius:0;box-shadow:none}
+.tile:hover img{transform:none}
+.tile .ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(20,24,32,.92) 0%,rgba(20,24,32,.35) 45%,transparent 72%);opacity:0;transition:.35s;display:flex;flex-direction:column;justify-content:flex-end;padding:20px}
+.tile:hover .ov{opacity:1}
+.tile .ov .t{color:#fff;font-family:var(--f-disp);font-weight:600;font-size:17px;line-height:1.2;transform:translateY(8px);transition:.35s .05s}
+.tile:hover .ov .t{transform:none}
+.tile .badge{position:absolute;top:14px;left:14px;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 11px;border-radius:999px;color:#fff;backdrop-filter:blur(4px)}
+.tile .vtag{position:absolute;top:14px;right:14px;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.tile .vtag svg{width:16px;height:16px;fill:var(--red);margin-left:2px}
+.cat-Email{background:var(--red)}.cat-Ads{background:var(--blue)}.cat-Advertorials{background:var(--amber);color:var(--ink)!important}
+.cat-Sales{background:var(--teal)}.cat-Web{background:var(--gun)}.cat-Audio{background:var(--pink)}
+/* CASE STUDIES */
+#cases{background:var(--paper)}
+.case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media(max-width:900px){.case-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.case-grid{grid-template-columns:1fr}}
+.case{position:relative;border-radius:18px;padding:28px 26px;background:var(--white);border:1px solid var(--line);overflow:hidden;transition:.35s;display:flex;flex-direction:column;min-height:210px}
+.case:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:transparent}
+.case::after{content:"";position:absolute;left:0;top:0;height:100%;width:5px}
+.case:nth-child(6n+1)::after{background:var(--blue)}.case:nth-child(6n+2)::after{background:var(--red)}
+.case:nth-child(6n+3)::after{background:var(--amber)}.case:nth-child(6n+4)::after{background:var(--teal)}
+.case:nth-child(6n+5)::after{background:var(--pink)}.case:nth-child(6n+6)::after{background:var(--gun)}
+.case .client{font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.case .headline{font-family:var(--f-disp);font-size:18px;font-weight:600;line-height:1.25;margin-bottom:auto}
+.case .big{font-family:var(--f-disp);font-size:42px;font-weight:700;line-height:1;margin:18px 0 6px;color:var(--ink)}
+.case:nth-child(6n+1) .big{color:var(--blue)}.case:nth-child(6n+2) .big{color:var(--red)}
+.case:nth-child(6n+3) .big{color:#c68e00}.case:nth-child(6n+4) .big{color:var(--teal)}
+.case:nth-child(6n+5) .big{color:var(--pink)}.case:nth-child(6n+6) .big{color:var(--gun)}
+.case .metric{font-size:13px;color:var(--muted);line-height:1.4}
+
+/* HUMAN VS AI */
+#versus{background:linear-gradient(180deg,#0f1420,#141b2b);color:#fff;overflow:hidden}
+#versus .sec-label{color:var(--teal)}#versus .sec-label::before{background:var(--teal)}
+#versus .sec-head h2{color:#fff}#versus .sec-head p{color:#aab4c4}
+.vs-wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center}
+@media(max-width:820px){.vs-wrap{grid-template-columns:1fr;gap:28px}}
+.vs-copy p{color:#c7d0dd;font-size:16px;margin-bottom:16px}
+.vs-copy .lead{font-size:20px;color:#fff;font-weight:500}
+.vs-copy .em{color:var(--amber);font-weight:600}
+.vs-table{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);border-radius:18px;overflow:hidden}
+.vs-row{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;padding:16px 20px;align-items:center;border-bottom:1px solid rgba(255,255,255,.08)}
+.vs-row:last-child{border-bottom:none}
+.vs-head{background:rgba(255,255,255,.06);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#8b95a5;font-weight:700}
+.vs-row .v{font-family:var(--f-disp);font-weight:600;font-size:15px}
+.vs-ai{opacity:.65}
+.vs-win{background:rgba(0,163,166,.1)}
+.vs-win .v{color:#fff}
+.vs-badge{display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:.06em;background:var(--teal);color:#06231f;padding:3px 8px;border-radius:5px;margin-left:8px;vertical-align:middle}
+.vs-big{font-size:19px;color:var(--teal)}
+.vs-cap{font-size:12px;color:#7a8494;padding:14px 20px;background:rgba(255,255,255,.03)}
+/* WEB DESIGN */
+#web{background:var(--paper)}
+.webgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media(max-width:860px){.webgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.webgrid{grid-template-columns:1fr}}
+.webcard{background:none;border:0;border-radius:0;box-shadow:none;transition:.35s;display:flex;flex-direction:column}
+.webcard:hover{transform:translateY(-4px)}
+.webcard .shot{position:relative;background:none}
+.webcard .shot img{width:100%;height:auto;display:block;border-radius:0}
+.webcard.ph .shot{display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#5b2333,#8a2b3f)}
+.webcard.ph .shot .phlogo{font-family:var(--f-disp);font-weight:700;font-size:26px;color:#fff;text-align:center;letter-spacing:.02em;padding:20px}
+.webcard .meta{padding:18px 20px}
+.webcard .meta h3{font-size:17px;font-weight:600;margin-bottom:5px}
+.webcard .meta p{font-size:13px;color:var(--muted)}
+.webcard .meta .u{font-size:12px;font-weight:600;color:var(--blue);margin-top:10px;display:inline-block}
+/* BOOKS */
+.books{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+@media(max-width:800px){.books{grid-template-columns:1fr}}
+.book{display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px}
+.book .cov{position:relative;transition:.4s}
+.book:hover .cov{transform:translateY(-8px) rotate(-1.5deg)}
+.book .cov img{border-radius:0;max-height:300px;width:auto}
+.book h3{font-size:17px;font-weight:600}
+.book .link{font-size:13px;font-weight:600;color:var(--red)}
+
+/* ABOUT */
+#about{background:linear-gradient(180deg,var(--white),#e9edf3)}
+.about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:start}
+@media(max-width:820px){.about-grid{grid-template-columns:1fr}}
+.about-copy p{font-size:16px;color:#3a3f47;margin-bottom:18px}
+.about-copy p.lead{font-size:20px;color:var(--ink);font-weight:500}
+.pcard{background:var(--paper);border-radius:16px;padding:22px 24px;box-shadow:var(--shadow-sm);border:1px solid var(--line)}
+.pcard h4{font-family:var(--f-disp);font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:var(--blue);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.pcard ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.pcard li{font-size:14.5px;color:#3a3f47;display:flex;gap:10px;align-items:flex-start}
+.pcard li::before{content:"";width:7px;height:7px;border-radius:2px;background:var(--amber);margin-top:8px;flex:none}
+/* EDUCATION */
+#edu{background:#07294D;color:#fff;position:relative;overflow:hidden}
+#edu .sec-label{color:#FFC600}#edu .sec-label::before{background:#FFC600}
+#edu .sec-head h2{color:#fff}#edu .sec-head p{color:#b9c6d8}
+.edu-wrap{display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:38px}
+@media(max-width:720px){.edu-wrap{grid-template-columns:1fr;text-align:center}}
+.drexel-logo{display:flex;flex-direction:column;align-items:center;gap:16px;padding-right:36px;border-right:1px solid rgba(255,255,255,.14)}
+@media(max-width:720px){.drexel-logo{border-right:none;border-bottom:1px solid rgba(255,255,255,.14);padding-right:0;padding-bottom:26px}}
+.drexel-logo .logobox{background:#fff;border-radius:12px;padding:20px 22px;box-shadow:0 12px 30px -12px rgba(0,0,0,.5)}
+.drexel-logo .logobox img{width:190px;height:auto;display:block}
+.edu-body h3{font-size:22px;font-weight:600;margin-bottom:6px}
+.edu-body .deg{color:#FFC600;font-weight:600;font-size:14px;letter-spacing:.03em;margin-bottom:16px}
+.edu-body p{color:#c7d3e2;font-size:15px;margin-bottom:14px}
+.edu-tags{display:flex;gap:9px;flex-wrap:wrap;margin-top:8px}
+.edu-tag{font-size:12.5px;font-weight:600;background:rgba(255,198,0,.14);color:#FFC600;border:1px solid rgba(255,198,0,.3);padding:6px 13px;border-radius:999px}
+/* LIGHTBOX */
+.lb{position:fixed;inset:0;z-index:500;background:rgba(15,19,26,.86);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:32px;opacity:0;transition:opacity .3s}
+.lb.on{display:flex;opacity:1}
+.lb-inner{background:var(--paper);border-radius:18px;max-width:920px;width:100%;max-height:90vh;overflow:hidden;display:grid;grid-template-columns:1.5fr 1fr;transform:scale(.94);transition:transform .3s;box-shadow:0 40px 100px -20px rgba(0,0,0,.6)}
+.lb.on .lb-inner{transform:none}
+@media(max-width:760px){.lb-inner{grid-template-columns:1fr;max-height:92vh;overflow-y:auto}}
+.lb-media{background:#0d1016;display:flex;align-items:center;justify-content:center;min-height:300px}
+.lb-media img,.lb-media video{width:100%;height:100%;max-height:90vh;object-fit:contain}
+.lb-side{padding:34px;display:flex;flex-direction:column;overflow-y:auto}
+.lb-side .badge{align-self:flex-start;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:6px 13px;border-radius:999px;color:#fff;margin-bottom:16px}
+.lb-side h3{font-size:24px;font-weight:700;margin-bottom:14px}
+.lb-side p{font-size:15px;color:#3a3f47;line-height:1.7}
+.lb-close{position:absolute;top:20px;right:24px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.14);border:none;color:#fff;font-size:22px;cursor:pointer;z-index:3;transition:.2s}
+.lb-close:hover{background:var(--red);transform:rotate(90deg)}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,.14);border:none;color:#fff;font-size:24px;cursor:pointer;z-index:3;transition:.2s}
+.lb-nav:hover{background:var(--blue)}
+.lb-prev{left:24px}.lb-next{right:24px}
+@media(max-width:760px){.lb-nav{display:none}}
+
+/* REVIEWS */
+#reviews{background:var(--paper)}
+.rv-tools{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px;align-items:center}
+.rv-search{flex:1;min-width:220px;display:flex;align-items:center;gap:10px;background:var(--white);border:1.5px solid var(--line);border-radius:11px;padding:11px 16px}
+.rv-search input{border:none;background:none;outline:none;font-size:14.5px;width:100%;font-family:inherit}
+.rv-sort{background:var(--white);border:1.5px solid var(--line);border-radius:11px;padding:11px 16px;font-size:14px;font-weight:600;font-family:inherit;cursor:pointer}
+.fv-tag{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:#1dbf73}
+.fv-tag svg{width:14px;height:14px}
+.rv-grid{columns:3;column-gap:20px}
+@media(max-width:900px){.rv-grid{columns:2}}
+@media(max-width:600px){.rv-grid{columns:1}}
+.rv{break-inside:avoid;margin-bottom:20px;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:20px 22px}
+.rv-top{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.rv-av{width:40px;height:40px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex:none}
+.rv-u{font-weight:600;font-size:14.5px}
+.rv-c{font-size:12.5px;color:var(--muted)}
+.rv-stars{color:var(--amber);font-size:14px;letter-spacing:1px;margin-bottom:8px}
+.rv-body{font-size:14px;color:#3a3f47;line-height:1.6}
+.rv-foot{display:flex;justify-content:space-between;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
+.rv-repeat{color:var(--teal);font-weight:600}
+.rv-more{display:block;margin:36px auto 0;padding:13px 30px}
+.rv-count{font-size:13px;color:var(--muted);margin-bottom:20px}
+footer{background:var(--ink);color:#fff;padding:60px 0 40px}
+.foot-grid{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:30px}
+.foot-brand{font-family:var(--f-disp);font-size:22px;font-weight:700}
+.foot-brand p{font-size:14px;color:#9aa2ad;font-weight:400;margin-top:10px;max-width:34ch;font-family:var(--f-body)}
+.foot-links{display:flex;gap:40px;flex-wrap:wrap}
+.foot-col h5{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#6b7280;margin-bottom:14px}
+.foot-col a{display:block;font-size:14px;color:#c7ccd3;margin-bottom:9px;transition:.2s}
+.foot-col a:hover{color:var(--amber)}
+.foot-bot{margin-top:44px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);font-size:13px;color:#6b7280;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}
+@media(max-width:820px){
+  .nav-links{position:fixed;top:0;right:0;bottom:0;width:78%;max-width:320px;background:var(--paper);flex-direction:column;align-items:flex-start;padding:90px 28px;gap:2px;transform:translateX(100%);transition:.35s;box-shadow:-20px 0 50px -20px rgba(0,0,0,.3);overflow-y:auto}
+  .nav-links.open{transform:none}
+  .nav-links a{width:100%;font-size:16px;padding:12px 0}
+  .burger{display:flex}
+}
+</style>
+<style>
+.lp-hero{padding:150px 0 40px}
+.lp-hero h1{font-size:clamp(36px,6vw,68px);font-weight:700;max-width:16ch}
+.lp-hero p{color:var(--muted);font-size:17px;max-width:58ch;margin-top:20px}
+.lp-list{display:flex;flex-direction:column;gap:70px;padding:40px 0 110px}
+.lp-item{display:grid;grid-template-columns:1.35fr 1fr;gap:44px;align-items:center}
+.lp-item:nth-child(even) .lp-shot{order:2}
+.lp-shot{display:block;border-radius:14px;overflow:hidden;box-shadow:var(--shadow);background:var(--paper);transition:.35s}
+.lp-shot:hover{transform:translateY(-4px);box-shadow:0 26px 60px -22px rgba(30,40,60,.38)}
+.lp-shot .bar{display:flex;gap:6px;padding:10px 14px;background:#e9edf2;border-bottom:1px solid var(--line)}
+.lp-shot .bar i{width:10px;height:10px;border-radius:50%;background:#cfd5dd}
+.lp-shot img{width:100%;height:auto}
+.lp-tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
+.lp-copy h2{font-size:clamp(24px,3vw,34px);font-weight:700;margin-bottom:14px}
+.lp-copy p{color:var(--muted);font-size:15.5px;margin-bottom:22px}
+.lp-copy .u{display:block;font-size:13px;font-weight:600;color:var(--blue);margin-top:14px;word-break:break-all}
+@media(max-width:860px){.lp-item{grid-template-columns:1fr;gap:22px}.lp-item:nth-child(even) .lp-shot{order:0}.lp-list{gap:56px}}
+</style>
+</head>
+<body>
+<nav class="nav" id="nav">
+  <a href="index.html" class="brand"><img src="logo-full.png" alt="Sean Ahern Creative" style="height:48px;width:auto;display:block"></a>
+  <div class="nav-links" id="navlinks">
+    <a href="index.html#work">Work</a>
+    <a href="index.html#cases">Case Studies</a>
+    <a href="index.html#web">Web</a>
+    <a href="landing-pages.html" style="color:var(--ink)">Landing Pages</a>
+    <a href="index.html#books">Books</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#reviews">Reviews</a>
+    <a href="mailto:sean@mainstreetmakes.com" class="nav-cta">Get in touch</a>
+  </div>
+  <div class="burger" id="burger"><span></span><span></span><span></span></div>
+</nav>
+<header class="lp-hero">
+  <div class="wrap">
+    <div class="sec-label reveal">Landing Pages</div>
+    <h1 class="reveal d1">Written to convert and built to ship.</h1>
+    <p class="reveal d2">Every page here started as a blank screen and a business problem. I wrote the copy, designed the layout and put each one live. Click any of them to see the real page.</p>
+  </div>
+</header>
+<main class="wrap"><div class="lp-list">
+    <article class="lp-item reveal">
+      <a class="lp-shot" href="https://ezcontractorwebsites.com" target="_blank" rel="noopener"><div class="bar"><i></i><i></i><i></i></div><img loading="lazy" src="lp/ezcontractor.webp" alt="EZ Contractor Websites landing page" width="1400" height="700"></a>
+      <div class="lp-copy"><span class="lp-tag">Lead Generation</span><h2>EZ Contractor Websites</h2><p>The sales page for my contractor website business. It is dark, rugged and loud on purpose, because it has to stop a plumber scrolling Facebook and get him to book a 30 minute call.</p><a class="btn btn-o" href="https://ezcontractorwebsites.com" target="_blank" rel="noopener">Visit the page</a><span class="u">https://ezcontractorwebsites.com</span></div>
+    </article>
+    <article class="lp-item reveal">
+      <a class="lp-shot" href="https://faceyourfears-pa.onrender.com" target="_blank" rel="noopener"><div class="bar"><i></i><i></i><i></i></div><img loading="lazy" src="lp/faceyourfears.webp" alt="Face Your Fears landing page" width="1400" height="700"></a>
+      <div class="lp-copy"><span class="lp-tag">Pre-Registration</span><h2>Face Your Fears</h2><p>A pre-registration page for a one-day fear of flying program at Doylestown Airport. The copy leads with my own story and builds toward a five minute flight in a two-seat Cessna.</p><a class="btn btn-o" href="https://faceyourfears-pa.onrender.com" target="_blank" rel="noopener">Visit the page</a><span class="u">https://faceyourfears-pa.onrender.com</span></div>
+    </article>
+    <article class="lp-item reveal">
+      <a class="lp-shot" href="https://buckscountymeals.com" target="_blank" rel="noopener"><div class="bar"><i></i><i></i><i></i></div><img loading="lazy" src="lp/buckscountymeals.webp" alt="Thyme and Care landing page" width="1400" height="700"></a>
+      <div class="lp-copy"><span class="lp-tag">Ad Landing Page</span><h2>Thyme and Care</h2><p>Written for a Bucks County personal chef whose ads were getting clicks and no messages. The page answers who the chef is, what she cooks and what it costs before a visitor has to ask.</p><a class="btn btn-o" href="https://buckscountymeals.com" target="_blank" rel="noopener">Visit the page</a><span class="u">https://buckscountymeals.com</span></div>
+    </article>
+    <article class="lp-item reveal">
+      <a class="lp-shot" href="https://hydromx.onrender.com" target="_blank" rel="noopener"><div class="bar"><i></i><i></i><i></i></div><img loading="lazy" src="lp/hydromx.webp" alt="Hydromx landing page" width="1400" height="700"></a>
+      <div class="lp-copy"><span class="lp-tag">Concept Site</span><h2>Hydromx</h2><p>A redesign concept for a heat transfer nanofluid company, written for the engineers and data center developers who decide what goes into the plans.</p><a class="btn btn-o" href="https://hydromx.onrender.com" target="_blank" rel="noopener">Visit the page</a><span class="u">https://hydromx.onrender.com</span></div>
+    </article>
+    <article class="lp-item reveal">
+      <a class="lp-shot" href="https://bcrc-staging.onrender.com" target="_blank" rel="noopener"><div class="bar"><i></i><i></i><i></i></div><img loading="lazy" src="lp/bcrc.webp" alt="Bucks County Running Company landing page" width="1400" height="700"></a>
+      <div class="lp-copy"><span class="lp-tag">Local Retail</span><h2>Bucks County Running Company</h2><p>A homepage rebuild for the specialty running store on West State Street in Doylestown, written around the free gait analysis and the way they fit every shoe.</p><a class="btn btn-o" href="https://bcrc-staging.onrender.com" target="_blank" rel="noopener">Visit the page</a><span class="u">https://bcrc-staging.onrender.com</span></div>
+    </article>
+    <article class="lp-item reveal">
+      <a class="lp-shot" href="https://peterwalts.onrender.com" target="_blank" rel="noopener"><div class="bar"><i></i><i></i><i></i></div><img loading="lazy" src="lp/peterwalts.webp" alt="Peter C. Walts landing page" width="1400" height="700"></a>
+      <div class="lp-copy"><span class="lp-tag">Personal Brand</span><h2>Peter C. Walts</h2><p>A personal brand page for an executive coach and broadcaster, with an interactive world map that walks visitors through thirty years of his work.</p><a class="btn btn-o" href="https://peterwalts.onrender.com" target="_blank" rel="noopener">Visit the page</a><span class="u">https://peterwalts.onrender.com</span></div>
+    </article>
+</div></main>
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">Sean Ahern, MBA<p>Copywriter, brand strategist, and producer in Doylestown, PA.</p></div>
+      <div class="foot-links">
+        <div class="foot-col"><h5>Explore</h5><a href="index.html#work">Work</a><a href="index.html#cases">Case Studies</a><a href="index.html#web">Web</a><a href="landing-pages.html">Landing Pages</a><a href="index.html#reviews">Reviews</a></div>
+        <div class="foot-col"><h5>Businesses</h5><a href="https://mainstreetmakes.com" target="_blank" rel="noopener">Main Street Creative</a><a href="https://amazingaudioads.com" target="_blank" rel="noopener">Amazing Audio Ads</a><a href="https://aiagencysearch.com" target="_blank" rel="noopener">AI Agency Search</a><a href="https://buckscountyblog.com" target="_blank" rel="noopener">Bucks County Blog</a><a href="https://madetokeep.agency" target="_blank" rel="noopener">Made To Keep</a></div>
+        <div class="foot-col"><h5>Connect</h5><a href="https://www.fiverr.com/seanaherncopy" target="_blank" rel="noopener">Fiverr</a><a href="mailto:sean@mainstreetmakes.com">Email</a></div>
+      </div>
+    </div>
+    <div class="foot-bot"><span>&copy; 2026 Sean Ahern. All rights reserved.</span><span>Doylestown, Bucks County, PA</span></div>
+  </div>
+</footer>
+<script>
+(function(){
+  var nav=document.getElementById('nav'),b=document.getElementById('burger'),l=document.getElementById('navlinks');
+  window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>20)});
+  b.addEventListener('click',function(){l.classList.toggle('open')});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+})();
+</script>
+</body>
+</html>
